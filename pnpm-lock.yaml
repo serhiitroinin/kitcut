@@ -18,27 +18,7 @@ importers:
         specifier: ^5.7.2
         version: 5.9.3
 
-  apps/demo:
-    dependencies:
-      '@kitcut/editor-react':
-        specifier: workspace:*
-        version: link:../../packages/editor-react
-      '@kitcut/export':
-        specifier: workspace:*
-        version: link:../../packages/export
-      '@kitcut/processor':
-        specifier: workspace:*
-        version: link:../../packages/processor
-      '@kitcut/recorder':
-        specifier: workspace:*
-        version: link:../../packages/recorder
-      '@kitcut/timeline-core':
-        specifier: workspace:*
-        version: link:../../packages/timeline-core
-    devDependencies:
-      typescript:
-        specifier: ^5.7.2
-        version: 5.9.3
+  apps/demo: {}
 
   packages/editor-react:
     dependencies:
