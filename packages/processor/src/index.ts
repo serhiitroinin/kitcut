@@ -65,6 +65,14 @@ export const passthroughProcessor: VideoProcessor = {
   process: (input) => input,
 };
 
+export { FramePipeline, type FramePipelineOptions } from "./pipeline";
+export {
+  createWatermarkProcessor,
+  createMirrorProcessor,
+  type WatermarkOptions,
+  type Corner,
+} from "./processors";
+
 /** Run an ordered list of processors as a single pipeline. */
 export function composeProcessors(
   processors: readonly VideoProcessor[],

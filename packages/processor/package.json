@@ -1,7 +1,7 @@
 {
   "name": "@kitcut/processor",
-  "version": "0.0.0",
-  "description": "VideoProcessor plugin contract for kitcut — pluggable per-frame effects.",
+  "version": "0.1.0",
+  "description": "VideoProcessor plugin contract + frame pipeline for kitcut.",
   "license": "MIT",
   "author": "Serhii Troinin",
   "type": "module",
@@ -20,11 +20,13 @@
     "build": "tsup src/index.ts --format esm --dts --clean",
     "dev": "tsup src/index.ts --format esm --dts --watch",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
     "clean": "rm -rf dist .turbo"
   },
   "devDependencies": {
     "tsup": "^8.3.5",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   },
   "publishConfig": {
     "access": "public"
