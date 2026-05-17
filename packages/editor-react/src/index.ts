@@ -1,39 +1,32 @@
 /**
- * `@kitcut/editor-react` — headless editor primitives. Bring your own UI.
+ * `@kitcut/editor-react` — headless editor hooks. Bring your own UI.
  *
- * No styling, no Tailwind, no design system. This package will expose
- * Radix-style slot components and hooks driven by `@kitcut/timeline-core`.
- * The full primitives land during the `editor-react` extraction block; this
- * scaffold pins the two cross-cutting contracts decided up front: the
- * injectable translator and the editor config seam.
+ * No styling, no Tailwind, no design system: the timeline engine + transport +
+ * zoom, plus an injectable translator. Wire the values into your own
+ * components.
  */
+import type { PersistenceAdapter } from "@kitcut/timeline-core";
+import type { Translate } from "./translate";
 
-import type { PersistenceAdapter, TimelineState } from "@kitcut/timeline-core";
+export { useEditor, type UseEditorOptions, type EditorApi } from "./use-editor";
+export { EditorProvider, useTranslate, type EditorProviderProps } from "./context";
+export { defaultTranslate, type Translate } from "./translate";
+export {
+  msToPx,
+  pxToMs,
+  clampZoom,
+  stepZoom,
+  MIN_PX_PER_SEC,
+  MAX_PX_PER_SEC,
+} from "./zoom";
 
-export type { TimelineState, PersistenceAdapter };
-
-/**
- * Injectable translator. kitcut ships an English default; hosts (e.g. Botley)
- * pass their own. Core never depends on an i18n framework.
- */
-export type Translate = (
-  key: string,
-  vars?: Record<string, string | number>,
-) => string;
-
-/** Minimal English default: returns the key, interpolating `{var}` tokens. */
-export const defaultTranslate: Translate = (key, vars) =>
-  vars
-    ? key.replace(/\{(\w+)\}/g, (_, name: string) =>
-        name in vars ? String(vars[name]) : `{${name}}`,
-      )
-    : key;
+export type {
+  TimelineClip,
+  PersistenceAdapter,
+  SaveStatus,
+} from "@kitcut/timeline-core";
 
 export interface EditorConfig {
-  /** Where the timeline is loaded from / saved to. */
-  readonly persistence: PersistenceAdapter;
-  /** Optional translator; defaults to English passthrough. */
-  readonly t?: Translate;
+  persistence: PersistenceAdapter;
+  t?: Translate;
 }
-
-export const EDITOR_REACT_VERSION = "0.0.0";
