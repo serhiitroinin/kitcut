@@ -1,7 +1,7 @@
 {
   "name": "@kitcut/export",
-  "version": "0.0.0",
-  "description": "ExportAdapter port and bundled client renderer for kitcut.",
+  "version": "0.1.0",
+  "description": "ExportAdapter port and a real in-browser client renderer for kitcut.",
   "license": "MIT",
   "author": "Serhii Troinin",
   "type": "module",
@@ -20,11 +20,13 @@
     "build": "tsup src/index.ts --format esm --dts --clean",
     "dev": "tsup src/index.ts --format esm --dts --watch",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
     "clean": "rm -rf dist .turbo"
   },
   "devDependencies": {
     "tsup": "^8.3.5",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   },
   "publishConfig": {
     "access": "public"

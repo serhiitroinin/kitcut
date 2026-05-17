@@ -59,20 +59,8 @@ export interface ExportAdapter {
   ): Promise<ExportResult>;
 }
 
-/**
- * Bundled in-browser renderer (WebCodecs / ffmpeg.wasm). The implementation
- * lands during the `@kitcut/export` extraction block; this stub keeps the
- * contract importable and fails loudly until then so hosts inject their own
- * adapter (e.g. a server-render adapter) in the meantime.
- */
-export function createClientRenderer(): ExportAdapter {
-  return {
-    id: "client-renderer",
-    async export() {
-      throw new Error(
-        "@kitcut/export: the bundled client renderer is not implemented yet. " +
-          "Inject your own ExportAdapter until the export extraction block lands.",
-      );
-    },
-  };
-}
+export {
+  createClientRenderer,
+  pickExportMimeType,
+  totalTimelineDurationMs,
+} from "./client-renderer";
