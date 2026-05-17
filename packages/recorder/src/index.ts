@@ -75,18 +75,26 @@ export function createScreenProvider(): CaptureProvider {
 }
 
 /**
- * Phone-as-webcam pairing transport. The signalling/transport implementation
- * lands during the `recorder` extraction block; this stub keeps the contract
- * importable so hosts can register the provider ahead of time.
+ * Phone-as-webcam pairing transport. The signalling layer is host-specific
+ * (WebRTC offer/answer over your own channel), so it stays a registerable
+ * provider rather than a bundled transport.
  */
 export function createPhoneProvider(): CaptureProvider {
   return {
     kind: "phone",
     async acquire() {
       throw new Error(
-        "@kitcut/recorder: phone pairing is not implemented yet. " +
-          "Register your own CaptureProvider for kind 'phone' until the recorder block lands.",
+        "@kitcut/recorder: phone pairing needs a host-supplied signalling " +
+          "transport. Register your own CaptureProvider for kind 'phone'.",
       );
     },
   };
 }
+
+export {
+  Recorder,
+  pickMimeType,
+  type RecorderOptions,
+  type RecorderState,
+  type RecordingResult,
+} from "./recorder";

@@ -1,7 +1,7 @@
 {
   "name": "@kitcut/recorder",
-  "version": "0.0.0",
-  "description": "Headless capture sources and the Input port for kitcut.",
+  "version": "0.1.0",
+  "description": "Headless capture sources, the Input port, and a MediaRecorder-based Recorder.",
   "license": "MIT",
   "author": "Serhii Troinin",
   "type": "module",
@@ -20,11 +20,16 @@
     "build": "tsup src/index.ts --format esm --dts --clean",
     "dev": "tsup src/index.ts --format esm --dts --watch",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
     "clean": "rm -rf dist .turbo"
+  },
+  "dependencies": {
+    "@kitcut/processor": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^8.3.5",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   },
   "publishConfig": {
     "access": "public"
