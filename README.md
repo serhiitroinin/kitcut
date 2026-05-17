@@ -8,6 +8,8 @@ studio: capture sources, a timeline editing engine, a pluggable per-frame
 effect pipeline, and a swappable export backend. No styling, no backend, no
 vendor lock-in — every external concern is a port you implement.
 
+**→ [serhiitroinin.github.io/kitcut](https://serhiitroinin.github.io/kitcut/)**
+
 ## Architecture — three ports, one core
 
 | Port | Package | You implement |
