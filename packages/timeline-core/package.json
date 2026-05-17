@@ -1,7 +1,7 @@
 {
   "name": "@kitcut/timeline-core",
-  "version": "0.0.0",
-  "description": "Timeline state engine and PersistenceAdapter port for kitcut.",
+  "version": "0.1.0",
+  "description": "Headless timeline editing engine (clips, history, silence) with a PersistenceAdapter port.",
   "license": "MIT",
   "author": "Serhii Troinin",
   "type": "module",
@@ -20,11 +20,18 @@
     "build": "tsup src/index.ts --format esm --dts --clean",
     "dev": "tsup src/index.ts --format esm --dts --watch",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
     "clean": "rm -rf dist .turbo"
   },
+  "peerDependencies": {
+    "react": ">=18"
+  },
   "devDependencies": {
+    "@types/react": "^18.3.18",
+    "react": "^18.3.1",
     "tsup": "^8.3.5",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   },
   "publishConfig": {
     "access": "public"
